@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node Stripe Checkout</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="container">
+    <div id="products">
+      <div id="productonebox">
+          <h2>Test Product 1</h2>
+          <h3>Price: $25.00</h3>
+          <input id="inputone" type="number" value=0>
+          <button id="onebutton">Add To Cart</button>
+
+
+
+      </div>
+      <div id="producttwobox">
+        <h2>Test Product 2</h2>
+        <h3>Price: $15.00</h3>
+        <input type="number" value=0>
+        <button>Add To Cart</button>
+
+
+
+    </div>
+    </div>
+
+    <div id="cartandcheckout">
+      <div id="cartbox">
+        <h2>Cart</h2>
+        </div>
+      </div>
+      <table>
+        <tr id= "tableheaders">
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        <tr id="productonerow">
+          <td>Test Product 1</td>
+          <td>$25</td>
+          <td id="onequantity"></td>
+         
+        </tr>
+        <tr id="producttworow">
+          <td>Test Product 2</td>
+          <td>$25</td>
+          <td></td> 
+        </tr>
+      </table>
+      <div id="total">
+        <h2>TOTAL</h2>
+
+      </div>
+      <div id="checkoutbox">
+        <form action="/create-checkout-session" method="POST">
+          <button type="submit">Checkout</button>
+        </form>
+      </div>
+
+
+
+    </div>
+
+
+
+  
+  
+
+  <script src=index.js></script>
+</body>
+</html>
