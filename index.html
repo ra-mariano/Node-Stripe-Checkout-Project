@@ -10,11 +10,12 @@
 <body>
   <div id="container">
     <div id="products">
-      <div id="productonebox">
+      <div id="productonebox" data-price="25.00">
           <h2>Test Product 1</h2>
           <h3>Price: $25.00</h3>
-          <input id="inputone" type="number" value=0>
+          <input id="inputone" type="number" value="0">
           <button id="onebutton">Add To Cart</button>
+          <button id="clearone">Clear Quantity</button>
 
 
 
@@ -33,36 +34,40 @@
     <div id="cartandcheckout">
       <div id="cartbox">
         <h2>Cart</h2>
-        </div>
+        <table>
+          <tr id= "tableheaders">
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+          <tr id="productonerow">
+            <td>Test Product 1</td>
+            <td>$25</td>
+            <td id="onequantity" value="0"></td>
+            
+            
+          </tr>
+          <tr id="producttworow">
+            
+            <td>Test Product 2</td>
+            <td>$25</td>
+            <td id="twoquantity" value="0"></td> 
+            
+          </tr>
+        </table>
       </div>
-      <table>
-        <tr id= "tableheaders">
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-        </tr>
-        <tr id="productonerow">
-          <td>Test Product 1</td>
-          <td>$25</td>
-          <td id="onequantity"></td>
-         
-        </tr>
-        <tr id="producttworow">
-          <td>Test Product 2</td>
-          <td>$25</td>
-          <td></td> 
-        </tr>
-      </table>
-      <div id="total">
+      <div id="totalbox">
         <h2>TOTAL</h2>
-
+        <h3 id="total">AMOUNT</h3>
+        
       </div>
       <div id="checkoutbox">
         <form action="/create-checkout-session" method="POST">
           <button type="submit">Checkout</button>
         </form>
       </div>
-
+      
+    </div>
 
 
     </div>

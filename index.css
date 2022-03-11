@@ -7,6 +7,13 @@
 
 }
 
+#cartandcheckout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 h2 {
   text-align: center;
 }
@@ -16,6 +23,15 @@ h2 {
   display: flex;
   justify-content: space-evenly;
  
+}
+
+table {
+  width:400px;
+  text-align: center;
+}
+
+#oneedit {
+  position:absolute
 }
 
 input {
@@ -37,5 +53,9 @@ td {
   
 }
 
+#total {
+  background-color: rgb(255, 255, 255);
+  width: 100px
+}
 
 
