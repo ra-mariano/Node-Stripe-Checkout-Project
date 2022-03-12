@@ -85,3 +85,29 @@ function clearTwo() {
 
   total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+".00")
 }
+
+const button = document.getElementById("checkoutbutton")
+button.addEventListener("click", () => {
+  console.log("working")
+  fetch("/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      items: [
+        { id: 1, quantity: parseInt(document.getElementById("onequantity").getAttribute("value")) },
+        { id: 2, quantity: parseInt(document.getElementById("twoquantity").getAttribute("value")) },
+      ],
+    }),
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+    return res.json().then(json =>Promise.reject(json))
+  })
+  .then(({ url}) => {
+    window.location = url
+  }).catch(e => {
+    console.error(e.error)
+  })
+})
