@@ -1,9 +1,10 @@
 #container {
-  background-color: rgb(140, 250, 250);
+  background: linear-gradient(160deg, rgb(218, 236, 248) 0% 10%, rgb(112, 218, 245) 15% 50%, rgb(93, 110, 243) 70% 80%, rgb(145, 149, 151) 95% 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
 }
 
@@ -20,9 +21,13 @@ h2 {
 }
 
 #products {
-  background-color: rgb(127, 84, 228);
+  background-color: rgb(76, 152, 252);
   display: flex;
   justify-content: space-evenly;
+  padding: 30px;
+  width: 900px;
+  border-radius: 5px;
+  
  
 }
 
@@ -36,27 +41,50 @@ table {
 }
 
 input {
-  opacity: 1
+  height: 25px;
+  width: 50px;
+  text-align: center;
+  border-radius: 5px;
+  
 }
 
 td {
-  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: 3px solid
 }
 
+#productonebox {
+  background-color: azure;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 7px 4px 10px; 
 
+}
 
-#productonerow {
-  
+#producttwobox {
+  background-color: azure;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 7px 4px 10px;
+
 }
 
 #productonerow {
   
 }
+
 
 #total {
   background-color: rgb(255, 255, 255);
-  width: 100px
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  border-style: solid;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  
 }
 
 
