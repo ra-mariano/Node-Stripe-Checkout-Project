@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Node Stripe Checkout</title>
   <link rel="stylesheet" href="index.css">
+  <script src="https://kit.fontawesome.com/70e04bd00e.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="container">
@@ -34,7 +35,7 @@
 
     <div id="cartandcheckout">
       <div id="cartbox">
-        <h2>Cart</h2>
+        <h2>Cart</h2><i id="carticon" class="fa-solid fa-cart-shopping fa-xl"></i>
         <table>
           <tr id= "tableheaders">
             <th>Product</th>
@@ -64,7 +65,7 @@
       </div>
       <div id="checkoutbox">
         <form action="/create-checkout-session" method="POST">
-          <button type="submit">Checkout</button>
+          <button id="checkoutbutton" type="submit">CHECKOUT</button>
         </form>
       </div>
       

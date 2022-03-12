@@ -18,10 +18,18 @@
 h2 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: aliceblue;
+}
+
+h3 {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: aliceblue;
+
 }
 
 #products {
-  background-color: rgb(76, 152, 252);
+  background-color: rgb(76, 152, 252, .4);
   display: flex;
   justify-content: space-evenly;
   padding: 30px;
@@ -54,16 +62,17 @@ td {
 }
 
 #productonebox {
-  background-color: azure;
+  background-color: rgb(60, 111, 187, .7);
   border-style: solid;
   border-radius: 3px;
   padding: 10px;
   box-shadow: 7px 4px 10px; 
+ 
 
 }
 
 #producttwobox {
-  background-color: azure;
+  background-color: rgb(60, 111, 187, .7);
   border-style: solid;
   border-radius: 3px;
   padding: 10px;
@@ -74,17 +83,49 @@ td {
 #productonerow {
   
 }
+#cartbox {
+  margin: 20px
+}
+
+
+#cartbox > h2 {
+  
+}
+
+#carticon {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 
 
 #total {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(53, 131, 248);
   width: 100px;
   height: 30px;
   text-align: center;
   border-style: solid;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-
   
+}
+
+#checkoutbutton {
+  font-size: 23px;
+  font-family: Geneva, Tahoma, sans-serif;
+  background-color: rgb(53, 131, 248);
+  color:rgb(255, 255, 255);
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  box-shadow: 4px 4px 10px 4px rgb(71, 71, 73);
+  cursor: pointer;
+}
+
+#checkoutbutton:hover {
+  background-color: rgb(60, 111, 187);
+  box-shadow: 4px 4px 10px 4px rgb(29, 29, 31);
 }
 
 
