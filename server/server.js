@@ -21,6 +21,8 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const storeItems = new Map([
   [1, {priceID: "price_1KbpENHBuM9OaL8xPeeVFAa8", name: "Test Product One", }],
   [2, {priceID: "price_1KbpExHBuM9OaL8xjgRtxqGY", name: "Test Product Two"}],
+  [3, {priceID: "price_1KcxKXHBuM9OaL8x5NeHNFws", name: "Test Sub Basic Package"}],
+  [4, {priceID: "price_1KcxKXHBuM9OaL8x4Ljaewie", name: "Test Sub Premium Package"}]
   
 ])
 

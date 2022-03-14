@@ -167,12 +167,21 @@ else if (document.getElementById("dropdown").value=="Premium Package") {
 
 const checkoutbutton = document.getElementById("checkoutbutton")
 checkoutbutton.addEventListener("click", () => {
+
+  let productthreedisplayedquantity =  document.getElementById("threequantity")
+  let productfourdisplayedquantity =  document.getElementById("fourquantity")
   
+  if(parseInt(document.getElementById("onequantity").getAttribute("value"))>0) {
+    items.push({ id: 1, quantity: parseInt(document.getElementById("onequantity").getAttribute("value")) })
+  }
   if(parseInt(document.getElementById("twoquantity").getAttribute("value"))>0) {
     items.push( { id: 2, quantity: parseInt(document.getElementById("twoquantity").getAttribute("value")) })
   }
-  if(parseInt(document.getElementById("onequantity").getAttribute("value"))>0) {
-    items.push({ id: 1, quantity: parseInt(document.getElementById("onequantity").getAttribute("value")) })
+  if(productthreedisplayedquantity.getAttribute("value")==1) {
+    items.push({ id: 3, quantity: 1 })
+  }
+  if(productfourdisplayedquantity.getAttribute("value")==1) {
+    items.push({ id: 4, quantity: 1 })
   }
   
   document.getElementById("twoquantity").setAttribute("value",0)
