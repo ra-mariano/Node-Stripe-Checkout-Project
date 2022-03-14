@@ -55,9 +55,19 @@ function clearOne() {
   let producttwo = document.getElementById("producttwobox")
   let productonedisplayedquantity = document.getElementById("onequantity")
   let producttwodisplayedquantity =  document.getElementById("twoquantity") //The quantity row
+  let productthreedisplayedquantity =  document.getElementById("threequantity")
+  let productfourdisplayedquantity =  document.getElementById("fourquantity")
   let total =   document.getElementById("total")
   
-  total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+".00")
+  if (productthreedisplayedquantity.innerHTML== 0 && productfourdisplayedquantity.innerHTML== 0) {
+    total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+".00")
+    }
+    else if (productthreedisplayedquantity.innerHTML== 1) {
+      total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+12+".00")
+    }
+    else if (productfourdisplayedquantity.innerHTML== 1) {
+      total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+19+".00")
+    }
 }
 
 function twoButton() {
@@ -70,11 +80,7 @@ function twoButton() {
   let productfourdisplayedquantity =  document.getElementById("fourquantity")
   let total =   document.getElementById("total")
   
-  //console.log(document.getElementById("twoquantity").getAttribute("value"))
-  // console.log(document.getElementById("inputtwo").value)
-  // console.log(productquantity)
-  console.log(producttwodisplayedquantity.getAttribute("value"))
-  
+
   producttwodisplayedquantity.innerHTML = parseInt(producttwouserquantity) + parseInt(producttwodisplayedquantity.getAttribute("value")) // number
   producttwodisplayedquantity.setAttribute("value", parseInt(producttwodisplayedquantity.innerHTML)) 
   
@@ -100,12 +106,22 @@ function clearTwo() {
   let producttwo = document.getElementById("producttwobox")
   let productonedisplayedquantity = document.getElementById("onequantity")
   let producttwodisplayedquantity =  document.getElementById("twoquantity") //The quantity row
+  let productthreedisplayedquantity =  document.getElementById("threequantity")
+  let productfourdisplayedquantity =  document.getElementById("fourquantity")
   let total =   document.getElementById("total")
   
   // producttwodisplayedquantity.innerHTML = parseInt(producttwouserquantity) + parseInt(producttwodisplayedquantity.getAttribute("value")) // number
   // producttwodisplayedquantity.setAttribute("value", parseInt(producttwodisplayedquantity.innerHTML)) 
   
-  total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+".00")
+  if (productthreedisplayedquantity.innerHTML== 0 && productfourdisplayedquantity.innerHTML== 0) {
+    total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+".00")
+    }
+    else if (productthreedisplayedquantity.innerHTML== 1) {
+      total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+12+".00")
+    }
+    else if (productfourdisplayedquantity.innerHTML== 1) {
+      total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+19+".00")
+    }
 }
 
 function threeButton() {
