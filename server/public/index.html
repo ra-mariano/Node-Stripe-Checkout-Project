@@ -17,20 +17,30 @@
           <input id="inputone" type="number" value="0" min="0">
           <button id="onebutton">Add To Cart</button>
           <button id="clearone">Clear Quantity</button>
-
-
-
       </div>
+
       <div id="producttwobox" data-price="15.00">
         <h2>Test Product 2</h2>
         <h3>Price: $15.00</h3>
         <input id="inputtwo" type="number" value=0 min="0">
         <button id="twobutton">Add To Cart</button>
         <button id="cleartwo">Clear Quantity</button>
-
-
-
     </div>
+
+    <div id="productthreebox" data-price="0">
+      <h2>Test Product 3</h2>
+      <h3>Choose your plan!</h3>
+      <h4>`Basic Package : $12
+    Premium Package: $19`</h4>
+      <!-- <form action="/checkout-page-sub" method="POST"> -->
+        <select id="dropdown">  <!--dropdown.value equates to which option is chosen-->
+          <option>Basic Package</option>
+          <option>Premium Package</option>
+        </select>
+        <button id="threebutton">Add To Cart</button>
+      <!-- <button id="threebutton" type="submit">Subscribe!</button> -->
+<!-- </form> -->
+  </div>
     </div>
 
     <div id="cartandcheckout">
@@ -46,27 +56,34 @@
             <td>Test Product 1</td>
             <td>$25</td>
             <td id="onequantity" value="0"></td>
-            
-            
           </tr>
           <tr id="producttworow">
-            
             <td>Test Product 2</td>
             <td>$15</td>
             <td id="twoquantity" value="0"></td> 
-            
+          </tr>
+          <tr id="productthreerow">
+            <td>Basic Package</td>
+            <td>$12</td>
+            <td id="threequantity" value="0"></td> 
+          </tr>
+          <tr id="productfourrow">
+            <td>Premium Package</td>
+            <td>$19</td>
+            <td id="fourquantity" value="0"></td> 
           </tr>
         </table>
       </div>
+      <div id ="totalcheckoutdivider"></div>
       <div id="totalbox">
         <h2>TOTAL</h2>
         <h3 id="total" data-quantity="0">AMOUNT</h3>
         
       </div>
       <div id="checkoutbox">
-        <form action="/create-checkout-session" method="POST"></form>
+        <!-- <form action="/checkout-page" method="POST">  -->
           <button id="checkoutbutton" type="submit">CHECKOUT</button>
-        </form>
+        <!-- </form> -->
       </div>
       
     </div>

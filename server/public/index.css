@@ -56,6 +56,20 @@ input {
   
 }
 
+#onebutton, #twobutton, #threebutton, #clearone, #cleartwo{
+  border-radius: 7px;
+  border-style: none;
+  font-size: 15px;
+}
+
+#dropdown {
+  height: 25px;
+  width: 170px;
+  text-align: center;
+  border-radius: 5px;
+  
+}
+
 td {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: 3px solid
@@ -64,33 +78,39 @@ td {
 #productonebox {
   background-color: rgb(60, 111, 187, .7);
   border-style: solid;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 10px;
-  box-shadow: 7px 4px 10px; 
+  box-shadow: 3px 2px 20px; 
+  width: 270px
  
-
 }
 
 #producttwobox {
   background-color: rgb(60, 111, 187, .7);
   border-style: solid;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 10px;
-  box-shadow: 7px 4px 10px;
+  box-shadow: 3px 2px 20px;
+  width: 270px
 
 }
 
-#productonerow {
-  
+#productthreebox {
+  background-color: rgb(60, 111, 187, .7);
+  border-style: solid;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 3px 2px 20px;
+  width: 270px
+
 }
+
 #cartbox {
   margin: 20px
 }
 
 
-#cartbox > h2 {
-  
-}
+
 
 #carticon {
   width: 100%;
@@ -99,7 +119,12 @@ td {
   margin-bottom: 20px;
 }
 
+#totalcheckoutdivider {
+width: 1300px;
+background-color: rgb(241, 241, 241);
+height: 1px
 
+}
 #total {
   background-color: rgb(53, 131, 248);
   width: 100px;
@@ -109,6 +134,7 @@ td {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   
 }
+
 
 #checkoutbutton {
   font-size: 23px;
