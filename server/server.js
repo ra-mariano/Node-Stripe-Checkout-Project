@@ -26,70 +26,67 @@ const storeItems = new Map([
   
 ])
 
-app.post('/checkout-page-sub', async (req, res) => {
+// app.post('/checkout-page-sub', async (req, res) => {
   
-  
-  
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {price: "price_1JktlkHBuM9OaL8xrMMEnF62", quantity: 1}],
-      mode: 'subscription',
-      success_url: "https://google.com",
-      cancel_url: 'https://example.com/cancel',
-    });
+//   const session = await stripe.checkout.sessions.create({
+//     line_items: [
+//       {price: "price_1JktlkHBuM9OaL8xrMMEnF62", quantity: 1}],
+//       mode: 'subscription',
+//       success_url: "https://google.com",
+//       cancel_url: 'https://example.com/cancel',
+//     });
     
-    res.redirect(303, session.url);
+//     res.redirect(303, session.url);
     
-  });
+//   });
   
   app.post('/checkout-page', async (req, res) => {
     try {
-      const session = await stripe.checkout.sessions.create({
+      const session = await stripe.checkout.sessions.create({ 
+        
         line_items: req.body.items.map(item=> {
           const storeItem = storeItems.get(item.id)
-          // return {
-            //   price_data: {
-              //     currency: "usd",
-              //     product_data: {
-                //       name: storeItem.name
-                //     },
-                //     unit_amount: storeItem.priceInCents
-                //   },
-                //   quantity: item.quantity 
-                // }
-                return {
-                  price: storeItem.priceID,
-                  quantity: item.quantity
-                }
-              }),
-              mode: 'payment',
-              success_url: "https://google.com",
-              cancel_url: 'https://example.com/cancel',
-            })
-            res.json({ url: session.url })
-            // res.redirect(303, session.url);
-            
+          return {
+            price: storeItem.priceID,
+            quantity: item.quantity
           }
-          catch (e) {
-            res.status(500).json({ error: e.message })
-          }
-          
-        });
-        
-        
-        app.listen(4242, () => console.log(`Listening on port ${4242}!`));
+        }),
+        mode: 'payment',
+        success_url: "https://google.com",
+        cancel_url: 'https://example.com/cancel',
+      })
+      res.json({ url: session.url })
+      // res.redirect(303, session.url); 
+    }
+    catch (e) {
+      res.status(500).json({ error: e.message })
+    }  
+  });
+  
+  app.listen(4242, () => console.log(`Listening on port ${4242}!`));
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // const storeItems = new Map([
+    //   [1, {priceInCents: 2500, name: "Test Product One", }],
+    //   [2, {priceInCents: 1500, name: "Test Product Two"}]
+    // ])
 
-
-
-
-
-
-
-
-
-
-        
-        // const storeItems = new Map([
-        //   [1, {priceInCents: 2500, name: "Test Product One", }],
-        //   [2, {priceInCents: 1500, name: "Test Product Two"}]
-        // ])
+    // return {
+      //   price_data: {
+        //     currency: "usd",
+        //     product_data: {
+          //       name: storeItem.name
+          //     },
+          //     unit_amount: storeItem.priceInCents
+          //   },
+          //   quantity: item.quantity 
+          // }

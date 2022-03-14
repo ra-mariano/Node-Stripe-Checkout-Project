@@ -4,6 +4,7 @@ document.getElementById("clearone").addEventListener("click", clearOne);
 document.getElementById("twobutton").addEventListener("click", twoButton);
 document.getElementById("cleartwo").addEventListener("click", clearTwo);
 document.getElementById("threebutton").addEventListener("click", threeButton);
+document.getElementById("clearthree").addEventListener("click", clearThree);
 // document.getElementById("threebutton").addEventListener("click", logSubChoice);
 
 let items = []
@@ -161,6 +162,34 @@ else if (document.getElementById("dropdown").value=="Premium Package") {
   total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+19+".00")
 }
 
+}
+
+function clearThree() {
+  document.getElementById("threequantity").innerHTML = 0
+  document.getElementById("threequantity").setAttribute("value", 0)
+  document.getElementById("fourquantity").innerHTML = 0
+  document.getElementById("fourquantity").setAttribute("value", 0)
+  
+  let productone = document.getElementById("productonebox")
+  let producttwo = document.getElementById("producttwobox")
+  let productonedisplayedquantity = document.getElementById("onequantity")
+  let producttwodisplayedquantity =  document.getElementById("twoquantity") //The quantity row
+  let productthreedisplayedquantity =  document.getElementById("threequantity")
+  let productfourdisplayedquantity =  document.getElementById("fourquantity")
+  let total =   document.getElementById("total")
+  
+  // producttwodisplayedquantity.innerHTML = parseInt(producttwouserquantity) + parseInt(producttwodisplayedquantity.getAttribute("value")) // number
+  // producttwodisplayedquantity.setAttribute("value", parseInt(producttwodisplayedquantity.innerHTML)) 
+  
+  if (productthreedisplayedquantity.innerHTML== 0 && productfourdisplayedquantity.innerHTML== 0) {
+    total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+".00")
+    }
+    else if (productthreedisplayedquantity.innerHTML== 1) {
+      total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+12+".00")
+    }
+    else if (productfourdisplayedquantity.innerHTML== 1) {
+      total.innerHTML = "$".concat(parseInt(productone.dataset.price)*parseInt(productonedisplayedquantity.getAttribute("value")) + (parseInt(producttwo.dataset.price)*parseInt(producttwodisplayedquantity.getAttribute("value")))+19+".00")
+    }
 }
 
 
