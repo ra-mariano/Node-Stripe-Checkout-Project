@@ -42,8 +42,19 @@ const storeItems = new Map([
   
   app.post('/checkout-page', async (req, res) => {
     try {
+      
+        // let arr = [{id:1, quantity: 2}, {id:2, quantity: 3}]
+        // let idcheck = arr.map(x => x.id)
+        // console.log(idcheck)
+        // if (idcheck.includes(3)) {
+        // }
+
+       let itemsIDs = req.body.items.map(x=>x.id)
+
+if (itemsIDs.includes(3)||itemsIDs.includes(4)) {
+     
+      console.log(req.body.items)
       const session = await stripe.checkout.sessions.create({ 
-        
         line_items: req.body.items.map(item=> {
           const storeItem = storeItems.get(item.id)
           return {
@@ -51,13 +62,33 @@ const storeItems = new Map([
             quantity: item.quantity
           }
         }),
-        mode: 'payment',
+        mode: 'subscription',
         success_url: "https://google.com",
         cancel_url: 'https://example.com/cancel',
       })
-      res.json({ url: session.url })
-      // res.redirect(303, session.url); 
+      res.send({ urlz: session.url })
+      // res.redirect(303, session.url)  not working for some reason
     }
+    else {
+
+        //console.log(req.body.items)
+        const session = await stripe.checkout.sessions.create({ 
+          line_items: req.body.items.map(item=> {
+            const storeItem = storeItems.get(item.id)
+            return {
+              price: storeItem.priceID,
+              quantity: item.quantity
+            }
+          }),
+          mode: 'payment',
+          success_url: "https://google.com",
+          cancel_url: 'https://example.com/cancel',
+        })
+        res.send({ urlz: session.url })
+        // res.redirect(303, session.url); 
+    }
+    }
+
     catch (e) {
       res.status(500).json({ error: e.message })
     }  

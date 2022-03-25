@@ -15,18 +15,13 @@
   align-items: center;
 }
 
-h2 {
+h2, h3, h4 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: aliceblue;
 }
 
-h3 {
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: aliceblue;
-
-}
+h4{font-size: 14px;}
 
 #products {
   background-color: rgb(76, 152, 252, .4);
@@ -110,7 +105,8 @@ td {
 }
 
 #cartbox {
-  margin: 20px
+  margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 

@@ -225,17 +225,22 @@ checkoutbutton.addEventListener("click", () => {
     }),
   })
   .then(response => {
-    if (response.ok) return response.json()
-    return response.json().then(json =>Promise.reject(json))
+    if (response.ok) 
+    {
+      
+      return response.json()}
+    else {
+      return response.json().then(json =>Promise.reject(json))
+    }
   })
-  .then(({ url }) => {
-    window.location = url
+  .then(({urlz}) => {
+    window.location = urlz
   })
-  .catch(e => {
+  .catch(e => {       //Remember, catch is the same as .then(null, failureCallback)
     //console.error(e.error)  the original
     //console.log("oh my!")   this works but doesn't indicate error
     //console.error(e)        outputs same as console.log(e), unsure when to use which exactly
-    console.log(e)
+    console.log(e)  
     
     
   });
