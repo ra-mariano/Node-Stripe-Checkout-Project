@@ -1,9 +1,13 @@
 require("dotenv").config()
 
+let mongoose = require("mongoose")
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 const express = require("express")
 const app = express()
 
-app.use(express.json())
+//app.use(express.json())
+app.use(express.json({verify: (req,res,buf) => { req.rawBody = buf }}));
 app.use(express.static("public"))
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
@@ -52,6 +56,26 @@ const storeItems = new Map([
        let itemsIDs = req.body.items.map(x=>x.id)
 
 if (itemsIDs.includes(3)||itemsIDs.includes(4)) {
+
+
+  var personSchema = new mongoose.Schema({
+    email: String,
+  });
+  
+  /** 3) Create and Save a Person */
+  var Person = mongoose.model('Person', personSchema);
+  
+  var createAndSavePerson = function(done) {
+    var janeHonda = new Person({email: "testemail"});
+  
+    janeHonda.save(function(err, data) {
+      if (err) return console.error(err);
+      done(null, data)
+    });
+  };
+  
+  createAndSavePerson
+
      
       console.log(req.body.items)
       const session = await stripe.checkout.sessions.create({ 
@@ -71,8 +95,10 @@ if (itemsIDs.includes(3)||itemsIDs.includes(4)) {
     }
     else {
 
-        //console.log(req.body.items)
-        const session = await stripe.checkout.sessions.create({ 
+ 
+       
+      console.log(req.body.items)
+      const session = await stripe.checkout.sessions.create({ 
           line_items: req.body.items.map(item=> {
             const storeItem = storeItems.get(item.id)
             return {
@@ -82,8 +108,10 @@ if (itemsIDs.includes(3)||itemsIDs.includes(4)) {
           }),
           mode: 'payment',
           success_url: "https://google.com",
-          cancel_url: 'https://example.com/cancel',
+          cancel_url: 'https://example.com/cancel'
+          
         })
+        
         res.send({ urlz: session.url })
         // res.redirect(303, session.url); 
     }
@@ -93,8 +121,74 @@ if (itemsIDs.includes(3)||itemsIDs.includes(4)) {
       res.status(500).json({ error: e.message })
     }  
   });
+
   
-  app.listen(4242, () => console.log(`Listening on port ${4242}!`));
+const endpointSecret= 'whsec_juZKKIzVbCEneH4CaWM1mO5ggowp7N43'
+
+app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+  const sig = request.headers['stripe-signature'];
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret);
+  } catch (err) {
+    response.status(400).send(`Webhook ERROR: ${err.message}`);
+    return;
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case 'payment_intent.created':
+      const paymentIntent = event.data.object;
+      // Then define and call a function to handle the event payment_intent.created
+      console.log('YAYYYY PI CREATED');
+      console.log(paymentIntent.id)
+      break;
+
+      case 'checkout.session.completed':
+      const session = event.data.object;
+      console.log("checkout sesshed")
+
+var personSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  favoriteFoods: [String]
+}); 
+
+var Person = mongoose.model('Person', personSchema, 'test 17');
+
+var createAndSavePerson = function(done) {
+  var janeFonda = new Person({name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"]});
+
+  janeFonda.save()
+
+
+ //Following 4 lines are from tutorial, but it looks like just using janeFonda.save() works here 
+/* janeFonda.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
+  }); 
+}; */
+
+}
+createAndSavePerson() 
+
+      // Then define and call a function to handle the event checkout.session.completed
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+  
+  // Return a 200 response to acknowledge receipt of the event
+  response.send();
+});
+
+
+
+  
+  app.listen(3000, () => console.log(`Listening on port ${3000}!`));
   
   
   
